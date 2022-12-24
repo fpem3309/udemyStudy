@@ -8,13 +8,32 @@
 </head>
 
 <body>
-  <h1>Forms Demo</h1>
+ <h1>Forms Demo</h1>
   
-  <form action="">
-    <input type="text" placeholder="username">
-    <input type="password" placeholder="password">
-    <input type="color">
-    <input type="number" placeholder="number">
+  <form action="/tacos">
+    <p>
+      <label for="username">Enter a Username: </label>
+      <input id="username" type="text" placeholder="username">
+    </p>
+    <p>
+      <label for="password">Enter a Passowrd</label>
+      <input id="password" type="pawwword" placeholder="password">
+    </p>
+    <p>
+      <label for="color">Enter a Color</label>
+      <input id="color" type="color">
+    </p>
+    <p>
+      <label for="number">Enter a NUmber</label>
+      <input id="number" type="number" placeholder="number">
+    </p>
+    <button type="button">Regular button (won't submit)</button>  <!-- form안에 있지만 일반 버튼 -->
+    <button type="submit">Button Submit</button>  <!-- form을 제출하는 submit 버튼-->
+    <input type="submit" value="Input Submit"> <!--form을 제출하는 submit 인풋-->
   </form>
+  
+  <hr>
+  
+  <button>Not Inside Form</button>  <!-- form 밖의 버튼-->
 </body>
 </html>
