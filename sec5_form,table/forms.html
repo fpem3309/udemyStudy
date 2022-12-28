@@ -26,7 +26,7 @@
     </p>
     <p>
       <label for="number">Enter a NUmber</label>
-      <input id="number" type="number" placeholder="number">
+      <input id="number" type="number" placeholder="number" min="1" max="10">
     </p>
     <button type="button">Regular button (won't submit)</button> <!-- form안에 있지만 일반 버튼 -->
     <button type="submit">Button Submit</button> <!-- form을 제출하는 submit 버튼-->
@@ -97,7 +97,74 @@
 
     <button>Submit</button>
   </form>
+  <hr>
 
+  <!-- Validations -->
+  <h2>Validations Demo</h2>
+  <form action="/dummy">
+    <label for="first">Enter First Name</label>
+    <input type="text" name="first" id="first" required>
+    <p>
+      <label for="last">Enter Last Name</label>
+      <input type="text" name="last" id="last" minlength="5" maxlength="10" required>
+    </p>
+
+    <p>
+      <label for="email">Enter Email</label>
+      <input type="email" id="email" name="email">
+    </p>
+
+    <p>
+      <label for="url">Enter Url</label>
+      <input type="url" id="url" name="url">
+    </p>
+    <button>Submit</button>
+  </form>
+
+  <hr>
+  <!-- test -->
+  <h2>Race Registration!</h2>
+
+  <form action="/test">
+    <div>
+      <label for="f_name">First Name</label>
+      <input type="text" name="f_name" id="f_name" required>
+      <label for="l_name">Last Name</label>
+      <input type="text" name="l_name" id="l_name" required>
+    </div>
+
+    <p>Select a Race:</p>
+
+    <div>
+        <input type="radio" name="race" id="rad1" value="rad1" required>
+        <label for="rad1">Fun Run 5k</label>
+    </div>
+    <div>
+        <input type="radio" name="race" id="rad2" value="rad2" required>
+        <label for="rad2">Half Marathon</label>
+    </div>
+    <div>
+        <input type="radio" name="race" id="rad3" value="rad3" required>
+        <label for="rad3">Full Marathon</label>
+    </div>
+
+    <div>
+      <label for="e">Email</label>
+      <input type="email" name="e" id="e" required>
+      <label for="p">Password</label>
+      <input type="password" name="p" id="p" required>
+    </div>
+
+    <div>
+      <label for="age">Select Age Group</label>
+      <select name="age" id="age">
+        <option value="1">under 18</option>
+        <option value="2">19~22</option>
+        <option value="3">23~26</option>
+      </select>
+    </div>
+    <button>Register</button>
+  </form>
 </body>
 
 </html>
