@@ -1,0 +1,14 @@
+h2 {
+  color: #55CFFC; /* HEX */
+  background-color: rgb(255, 239, 213); /* RGB */
+}
+
+button {
+  color: magenta;
+  background-color: cyan;
+}
+
+p {
+  color: yellowgreen;
+  background: orange;
+}

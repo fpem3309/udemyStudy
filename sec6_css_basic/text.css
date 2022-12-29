@@ -1,0 +1,16 @@
+h1{
+  text-align: center; /*텍스트 정렬*/
+  font-weight: normal;  /*텍스트 굵기*/
+  text-decoration: #f87297 underline wavy 5px;  /* 텍스트 밑줄 */
+  letter-spacing: 15px; /*텍스트 자간*/
+  font-size: 50px;
+  /* font-family: Big Caslon, Futura, Arial, sans-serif; */
+  font-family: monospace;
+}
+a{
+  text-decoration: none;
+}
+p{
+  text-align: right;
+  line-height: 0.1; /*텍스트 행간*/
+}
