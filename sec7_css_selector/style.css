@@ -1,0 +1,71 @@
+body{
+  background-color: #edede9;
+}
+
+button{
+  font-size: 30px;
+  background-color: #a8dadc;
+}
+
+h1,h2{
+  color:#457b9d;
+}
+
+#signup{
+  background-color: #231942;
+  color: #a8dadc;
+}
+
+span{
+  color:#2a9d8f;
+}
+
+.tag{
+  background-color: #9b2226;
+  color:#e0b1cb;
+  font-size: 16px;
+}
+
+.post a{  /* 자식 선택*/
+  color: #2a9d8f;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+footer a{/* 자식 선택*/
+  color: #e63946;
+}
+
+h2 + button{ /* 형제 선택*/
+  background-color: pink;
+  font-size: 20px;
+}
+
+footer > a{ /* 직계 자손 선택*/
+  color: #231942;
+}
+
+input[type="password"]{ /* 속성 선택*/
+  color:greenyellow;
+}
+
+a[href*="google"]{ /* 신기한 속성 선택*/
+  color:magenta;
+}
+
+.post button:hover{/* 가상 클래스 - hover*/
+  background-color: #e63946;
+  color:#edede9;
+}
+
+.post a:hover{/* 가상 클래스 - hover*/
+  text-decoration: underline;
+}
+
+.post button:active{/* 가상 클래스 - active*/
+  background-color: #0a9396;
+}
+
+.post:nth-of-type(2n){
+  background-color: #9f86c0;
+}
