@@ -66,6 +66,6 @@ a[href*="google"]{ /* 신기한 속성 선택*/
   background-color: #0a9396;
 }
 
-.post:nth-of-type(2n){
+.post:nth-of-type(2n){/* 가상 클래스 - nth-of-type*/
   background-color: #9f86c0;
 }
