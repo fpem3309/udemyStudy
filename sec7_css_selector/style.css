@@ -53,19 +53,47 @@ a[href*="google"]{ /* 신기한 속성 선택*/
   color:magenta;
 }
 
-.post button:hover{/* 가상 클래스 - hover*/
+
+/* 가상 클래스 */
+.post button:hover{
   background-color: #e63946;
   color:#edede9;
 }
 
-.post a:hover{/* 가상 클래스 - hover*/
+.post a:hover{
   text-decoration: underline;
 }
 
-.post button:active{/* 가상 클래스 - active*/
+.post button:active{
   background-color: #0a9396;
 }
 
-.post:nth-of-type(2n){/* 가상 클래스 - nth-of-type*/
+.post:nth-of-type(2n){
   background-color: #9f86c0;
+}
+
+/* 가상 요소 */
+h2::first-letter{
+  font-size: 50px;
+}
+
+p::first-line{
+  color:purple;
+}
+
+p::selection{
+  background-color: #ee9b00;
+}
+
+h1, h2{
+  color:yellow;
+}
+
+/* 우선순위(특이도) 테스트*/
+button:hover{
+  background-color:#0a9396;
+}
+
+button{
+  background-color: magenta;
 }
