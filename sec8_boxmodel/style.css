@@ -1,0 +1,55 @@
+body{
+  margin:0;
+}
+div{
+  width: 250px;
+  height: 250px;
+}
+
+h1{
+  background-color: pink;
+  width: 200px;
+  padding-left: 100px;
+  padding-top: 50px;
+  margin: 0;
+}
+span{
+  margin-left: 30px;
+  margin-top: 30px; /* 디스플레이 속성 때문에 안됨??*/
+}
+
+#first{
+  background-color: #90e0ef;
+  border-width: 5px;
+  border-color: black;
+  border-style: solid;
+  box-sizing: border-box; /* width 기준이 테투리까지 */
+
+  margin-left: 50px;
+  margin-bottom: 100px;
+
+}
+#second{
+  background-color: #48cae4;
+  border-width: 3px;
+  border-color: #4a4e69;
+  border-style: dashed;
+  border-left-width: 8px;
+
+  padding-right: 50px;
+
+  margin:200px;
+
+}
+#third{
+  background-color: #00b4d8;
+  border: 4px solid black;
+  border-left-style: dotted;
+  border-radius: 50%;
+}
+
+button{
+  /* padding:20px; */
+  /* padding: 10px 20px; */
+  padding: 10px 20px 30px 40px;
+}
