@@ -1,0 +1,63 @@
+section{
+  background-color: #2a9d8f;
+  width: 800px;
+  height: 800px;
+}
+
+div{
+  background-color: #e9c46a;
+  width:50%;  /* 부모 크기의 50%*/
+  height: 50%;  /* 부모 크기의 50%*/
+}
+
+#ems h1{
+  font-size: 40px;
+  border: 1px solid black;
+  line-height: 200%;  /* 텍스트 기준 2배*/
+}
+
+#ems h2{
+  font-size: 2em; /* 글꼴 요소의 em =  부모의 글꼴 크기에 비례*/
+  margin-left: 1em; /* 여벡의 em = 요소의 글꼴 크기에 비례*/
+}
+#ems h3{
+  font-size: 1.5em;
+}
+
+#ems p{
+  font-size: 1em;
+}
+
+#ems{
+  font-size: 20px;
+}
+
+button{
+  font-size: 1em;
+  padding: 0 1em;
+  border-radius: 0.5em;
+  background-color: #a3c4f3;
+  color: white;
+}
+
+ul{
+  font-size: 1.5em;
+}
+
+html{
+  font-size: 30px;
+}
+
+#rems h2{
+  font-size: 3rem;
+}
+#rems h3{
+  font-size: 2rem;
+}
+
+#rems ul{
+  font-size: 0.8rem;
+}
+#rems button{
+  font-size: 1.5rem;
+}

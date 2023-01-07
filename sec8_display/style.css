@@ -1,0 +1,40 @@
+/* h1{
+  background-color: palegoldenrod;
+  border: 1px solid black;
+  display: inline;
+}
+
+span{
+  background-color: paleturquoise;
+  border: 1px solid black;
+  display: block;
+} */
+
+/* inline */
+span{
+  background-color: palevioletred;
+  border: 1px solid black;
+  width: 500px; /* 적용 안됨, height도 동일*/
+  padding:50px; /* 적용되지만 다른 요소와 겹침*/
+  margin:50px;  /* 텍스트와 같은 라인만 적용됨*/
+}
+
+h1{
+  background-color: palegreen;
+  border: 1px solid black;
+  width: 300px;
+  height: 200px;
+  padding:50px;
+  margin:50px;
+  display: none;
+}
+
+/* inline-block으로 inline처럼 보이고 속성 다 적용됨*/
+div{
+  width: 200px;
+  height: 200px;
+  background-color: olive;
+  border: 1px solid black;
+  display: inline-block;
+  margin: 50px;
+}
