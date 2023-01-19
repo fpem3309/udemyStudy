@@ -11,25 +11,47 @@ h1 {
   margin: 0 auto;
   border: 5px solid #003049;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  align-items: flex-end;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 #container div{
   width: 200px;
   height: 200px;
   text-align: center;
+  /*flex-basis: 400px;*/  /*주축 방향의 크기 맞춰서 크기지정 (width 또는 height 무시)*/
+  flex-basis:600px;
 }
 
-/* div:nth-of-type(2){
-  align-self: center;
+div:nth-of-type(1){
+  flex-grow: 1; /* 늘어나는 비율 - 원래 크기보다 커지면? */
+  flex-shrink: 2; /* 줄어드는 비율 - 원래 크기보다 작아지면? */
 }
-div:nth-of-type(3){
-  align-self: flex-end;
-} */
-
 div:nth-of-type(5){
-  align-self: flex-start;
+  flex-grow: 2;
+}
+
+
+/* flex 속기법*/
+h2 {
+  text-align: center;
+}
+main{
+  width: 80%;
+  margin: 0 auto;
+  border: 5px solid black;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+main .sidebar{
+  background-color: #ff00fb;
+  border: 2px solid white;
+  flex:1 2 300px;   /* 단위없이 숫자만 => flex-grow */
+}
+main .maincontent{
+  background-color: yellowgreen;
+  flex:2 1 800px;
 }
