@@ -1,0 +1,105 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-size: 6em;
+    text-align: center;
+}
+nav {
+    font-size: 1.5em;
+    display: flex;
+    justify-content: space-between;
+}
+ul{
+    flex:1;
+    max-width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+
+    margin: 0;
+    padding: 0;
+}
+
+/* ul,li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+} */
+li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+/* min-width와 max-width 사이에 있으면 실행*/
+/* @media (min-width: 600px) and (max-width: 800px) {
+    h1{
+        color:purple;
+    }
+} */
+
+
+/* max-width 별 실행*/
+/* @media (max-width: 1500px){
+    h1{
+        color: yellow;
+    }
+}
+@media (max-width: 1000px){
+    h1{
+        color: orange;
+    }
+}
+@media (max-width: 500px){
+    h1{
+        color: red;
+    }
+} */
+
+
+
+/* min-width 별 실행*/
+h1{
+    color: red;
+}
+
+@media (min-width: 501px){
+    h1{
+        color:orange;
+    }
+}
+@media (min-width: 1000px){
+    h1{
+        color:yellow;
+    }
+}
+@media (min-width: 1500px){
+    h1{
+        color:green;
+    }
+}
+
+
+/* 가로모드 경우*/
+/* @media (orientation: landscape) {
+    body{
+        background-color: magenta;
+    }
+} */
+
+/* flex 이용해서 주축,텍스트크기 변경 */
+@media (max-width: 768px) {
+    h1{
+        font-size: 4em;
+    }
+    nav, nav ul{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media (max-width: 576px) {
+    h1{
+        font-size: 2.5em;
+    }
+}
