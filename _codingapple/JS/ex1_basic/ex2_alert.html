@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Alert UI</title>
+</head>
+
+<body>
+  <div class="alert-box" id="alert">
+    <p id="title">알림창</p>
+    <button id="close">닫기버튼</button>
+  </div>
+  <button onclick="alertToggle('block', '아이디 입력 ㄱ')">열기버튼1</button>
+  <button onclick="alertToggle('block', '비번 입력 ㄱ')">열기버튼2</button>
+  <script>
+  </script>
+
+  <script>
+
+  document.getElementById('close').addEventListener('click', function(){
+    document.getElementById('alert').style.display='none';
+  })
+
+    function alertToggle(display, type){
+      document.getElementById('alert').style.display=display;
+      document.getElementById('title').innerHTML = type;
+    }
+  </script>
+</body>
+
+</html>
