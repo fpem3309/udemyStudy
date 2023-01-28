@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>태조 이성계가 태어난 년도는?</p>
+  <input type="text" id="answer">
+  <button id="send-answer">제출</button>
+</body>
+<script>
+  
+  //1
+  let age = 26; // 재할당 o
+  const address = 'Gwangju'; // 재할달 x
+
+  //2
+  var price = 10000;
+  var to2price = 0;
+
+  if(price < 50000){
+    to2price = price * 1.15 * 1.15
+  }else{
+    to2price = price * 1.2 * 1.2
+  }
+
+  console.log(to2price)
+
+  //3
+  var first = 360;
+  var total = 0;
+
+  total = first + first * 2/3 + first * 2/3 * 2/3
+
+  console.log(total)
+
+  //4
+  var cnt = 0;
+  document.getElementById('send-answer').addEventListener('click', function(){
+    var useranswer = document.getElementById('answer').value;
+    cnt ++;
+
+    if(useranswer == '1335'){
+      alert('성공!')
+      cnt = 0;
+    }else if(cnt >= 3 && useranswer != '1335'){
+      alert('멍청아')
+      cnt = 0;
+    }
+  })
+
+  //5
+  var num1 = 10
+
+  console.log(num1*1.2**10) // 1.2 거듭제곱
+
+  //6
+  var first = 360;
+  var total = 0;
+  var cnt = 0;
+
+  while(true) {
+    first = first * 2/3
+    
+    if(first <= 1){
+      break;
+    }
+    console.log(first)
+  }
+  
+
+</script>
+</html>
