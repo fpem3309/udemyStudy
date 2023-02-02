@@ -1,12 +1,87 @@
-/* ex_4 carousel*/
-.slide-container{
+/* ex4 carousel*/
+.slide-container {
   width: 300vw;
   transition: all 1s;
 }
-.slide-box{
+
+.slide-box {
   width: 100vw;
   float: left;
 }
-.slide-box img{
+
+.slide-box img {
   width: 100%;
+}
+
+/*ex6 scroll event*/
+
+/* bootstrap 스크롤 transition 원상복구*/
+:root {
+  scroll-behavior: auto;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+}
+
+.navbar-brand {
+  font-size: 30px;
+  transition: font-size 1s;
+}
+
+.black_line {
+  background-color: black;
+  height: 5px;
+  /* width: 100%; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+
+
+/* ex7 tab */
+ul.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+ul.list::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.tab-button {
+  display: block;
+  padding: 10px 20px 10px 20px;
+  float: left;
+  margin-right: -1px;
+  margin-bottom: -1px;
+  color: grey;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.orange {
+  border-top: 2px solid orange;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid white;
+  border-left: 1px solid #ccc;
+  color: black;
+  margin-top: -2px;
+}
+
+.tab-content {
+  display: none;
+  padding: 10px;
+}
+
+.show {
+  display: block;
 }

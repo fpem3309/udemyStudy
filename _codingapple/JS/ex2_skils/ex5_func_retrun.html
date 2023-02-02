@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function return</title>
+</head>
+
+<body>
+
+  <script>
+    function test(a){
+      var num = (a * 1.1).toFixed(2); // 2번째까지 (문자로 변환됨)
+      return parseFloat(num);
+      console.log('hi??');  // return 다음은 실행 x
+    }
+
+    var test = test(55555);
+    console.log(test);
+
+
+    // 분과 초를 ms단위로 return
+    function sectoMs(minute, secound){
+      return (minute* 60 + secound)*1000
+    }
+    console.log(sectoMs(2,10))
+
+    function sale(price, firstChk){
+      price = price * 0.9
+      if(firstChk == true){
+        price - 1.5
+      }
+      return parseFloat(price.toFixed(1))
+    }
+
+    console.log(sale(10,true))
+
+
+  </script>
+</body>
+
+</html>
