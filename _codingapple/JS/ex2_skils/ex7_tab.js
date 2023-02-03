@@ -4,8 +4,9 @@
 // 해당 div에 show 클래스명 추가
 var button = $('.tab-button')
 var content = $('.tab-content')
+var length = button.length; // 선택자 수 구하기 ( 확장성 )
 
-for(let i = 0; i < 3; i++){
+for(let i = 0; i < length; i++){
 
   button.eq(i).click(function(){
     button.removeClass('orange')
