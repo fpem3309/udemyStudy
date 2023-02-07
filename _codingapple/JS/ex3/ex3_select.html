@@ -16,29 +16,54 @@
     <select class="form-select mt-2">
       <option>모자</option>
       <option>셔츠</option>
+      <option>바지</option>
     </select>
-    <select class="form-select mt-2 form-hide">
-      <option>50</option>
-      <option>55</option>
-    </select>
+
     <select class="form-select mt-2 form-hide">
       <option>95</option>
-      <option>100</option>
+      <option>100</optiond=>
     </select>
   </form>
 
+  <div id="test">
+
+  </div>
+
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script>
+    // var a = document.createElement('p');
+    // a.innerHTML = '안녕';
+    // document.querySelector('#test').appendChild(a);
+
+    var template = '<p>안녕</p>';
+    document.querySelector('#test').insertAdjacentHTML('beforeend', template);  // beforeend - 안쪽 맨 끝
+
+    // 또는 query append()
+    $('#test').append(template);
+
+  </script>
+
+
   <script>
     $('.form-select').eq(1).removeClass('form-hide');
 
-    $('.form-select').eq(0).change(function () {
-      if ($('.form-select').eq(0).val() == '모자') {
+    let select = $('.form-select').eq(0);
+
+    select.change(function () {
+      if (select.val() == '모자') {
         $('.form-select').eq(1).removeClass('form-hide');
         $('.form-select').eq(2).addClass('form-hide');
-      } else {
+      }else if(select.val() == '셔츠'){
         $('.form-select').eq(1).addClass('form-hide');
         $('.form-select').eq(2).removeClass('form-hide');
+      }else if(select.val() == '바지'){
+        
+        // 바지 누르면 option 데이터 바꾸기
+        $('.form-select').eq(1).removeClass('form-hide');
+        var template = `<option>28</option>
+                        <option>30</option>`;
+        $('.form-select').eq(1).html(template)
       }
     })
 
