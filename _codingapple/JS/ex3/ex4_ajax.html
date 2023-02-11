@@ -27,6 +27,10 @@
     <button class="btn btn-primary">더보기</button>
   </div>
 
+  <div class="container my-3">
+    <button class="btn btn-danger" id="price">가격순 정렬</button>
+  </div>
+
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 
@@ -37,6 +41,7 @@
       { id: 1, price: 50000, title: 'Springfield Shirt' },
       { id: 2, price: 60000, title: 'Black Monastery' }
     ];
+
 
     $.get('https://codingapple1.github.io/hello.txt')
       .done(function (data) {
@@ -52,6 +57,8 @@
         console.log('실패..')
       })
 
+
+    // html 생성
     function appleGet(products) {
       $('.row').append(
         `<div class="col-sm-4">
@@ -67,26 +74,76 @@
     })
 
     var cnt = 0;
-    $('.container .btn').click(function () {
+    $('.container .btn-primary').click(function () {
       cnt++;
 
-      if (cnt < 2) {
+      if (cnt < 2) {  // 더보기 1 데이터 가져오기
         $.get('https://codingapple1.github.io/js/more1.json')
           .done(function (data) {
             data.forEach(element => {
               appleGet(element)
             });
           })
-      } else {
+      } else {  // 더보기 2 데이터 가져오기
         $.get('https://codingapple1.github.io/js/more2.json')
           .done(function (data) {
             data.forEach(element => {
               appleGet(element)
             })
-            $('.container .btn').css('display', 'none')
+            $('.container .btn-primary').css('display', 'none') // 더보기 버튼 없애기
           })
       }
     })
+
+
+    // 정렬
+
+    var arr = [6, 10, 8, 3, 7];
+    var arr2 = ['a', 'c', 'b'];
+
+    arr.sort(function (a, b) {
+      return a - b // 숫자 오름차순 정렬
+      return b - a // 숫자 내림차순 정렬
+    });
+
+    console.log(arr);
+
+    arr2.sort(); // 문자 오름차순 정렬
+    console.log(arr2)
+
+
+    $('#price').click(function () {
+      products.sort(function (a, b) {
+        return a.price - b.price
+      })
+      $('.row').html(''); // 비우고
+      products.forEach((a, i) => {  // 정렬한 데이터 다시 생성
+        $('.row').append(
+          `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/700x700" class="w-100">
+            <h5>${a.title}</h5>
+            <p>가격 : ${a.price}원</p>
+          </div>`
+        )
+      })
+    })
+
+
+    // 필터
+    var arr3 = [7,3,5,2,40];
+
+    var new_arr3 = arr3.filter(function(a){   // 결과는 변수에 저장해서 사용해야 함 - 원본 변형X
+      return a < 4  // 4 미만의 자료만 새로운 변수에 담기
+    })
+    console.log(new_arr3)
+
+    // map 함수 - array 자료 전부 변형할 때
+    var new_arr4 = arr3.map(function(a){
+      return a*4
+    })
+    console.log(new_arr4)
+
+
 
   </script>
 
