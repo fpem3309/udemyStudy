@@ -29,6 +29,8 @@
 
   <div class="container my-3">
     <button class="btn btn-danger" id="price">가격순 정렬</button>
+    <button class="btn btn-warning" id="name_desc">상품명 역순 정렬</button>
+    <button class="btn btn-warning" id="under6">6만원 이하 상품보기</button>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
@@ -130,19 +132,56 @@
 
 
     // 필터
-    var arr3 = [7,3,5,2,40];
+    var arr3 = [7, 3, 5, 2, 40];
 
-    var new_arr3 = arr3.filter(function(a){   // 결과는 변수에 저장해서 사용해야 함 - 원본 변형X
+    var new_arr3 = arr3.filter(function (a) {   // 결과는 변수에 저장해서 사용해야 함 - 원본 변형X
       return a < 4  // 4 미만의 자료만 새로운 변수에 담기
     })
     console.log(new_arr3)
 
     // map 함수 - array 자료 전부 변형할 때
-    var new_arr4 = arr3.map(function(a){
-      return a*4
+    var new_arr4 = arr3.map(function (a) {
+      return a * 4
     })
     console.log(new_arr4)
 
+
+    // 상품명 역순 정렬
+    $('#name_desc').click(function () {
+      products.sort(function (a, b) {
+        if (a.title > b.title) return -1;
+        if (a.title < b.title) return 1;
+        return 0;
+      })
+      $('.row').html('');
+      products.forEach((product) => {
+        $('.row').append(
+          `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/700x700" class="w-100">
+            <h5>${product.title}</h5>
+            <p>가격 : ${product.price}원</p>
+          </div>`
+        )
+      })
+    })
+
+    // 6만원 이하 상품보기
+    $('#under6').click(function () {
+      let under6 = products.filter(function (product) {
+        return product.price < 60000
+      })
+      $('.row').html('');
+
+      under6.forEach((product) => {
+        $('.row').append(
+          `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/700x700" class="w-100">
+            <h5>${product.title}</h5>
+            <p>가격 : ${product.price}원</p>
+          </div>`
+        )
+      })
+    })
 
 
   </script>
