@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switch Demo</title>
+</head>
+
+<body>
+  <div id="quiz">
+    <h4>물에 빠지면 누구 구할거?</h4>
+    <button>와이프</button>
+    <button>부모님</button>
+    <button>지나가던 개</button>
+  </div>
+</body>
+
+<script>
+  // let type = 4;
+  // switch (type) {
+  //   case 1:
+  //     alert('1')
+  //     break;
+  //   case 2:
+  //     alert('2')
+  //     break;
+  //   case 3:
+  //     alert('3')
+  //     break;
+  //   default:
+  //     alert('해당안됨')
+  // }
+
+  document.querySelector('#quiz').addEventListener('click', function (e) {
+    switch(e.target.innerHTML){
+      case '와이프':
+        alert('와이프? ㅋㅋ')
+        break
+      case '부모님':
+        alert('효자네 ㅋ')
+        break
+      case '지나가던 개':
+        alert('뭐하는 놈? ㅋㅋㅋ')
+        break
+    }
+  })
+  
+</script>
+
+</html>

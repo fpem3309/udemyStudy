@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+  <title>Carousel swiper Demo</title>
+</head>
+
+<body>
+  <div style="overflow: hidden">
+    <div class="slide-container">
+      <div class="slide-box">
+        <img src="./car1.png" draggable="false" />
+      </div>
+      <div class="slide-box">
+        <img src="./car2.png" />
+      </div>
+      <div class="slide-box">
+        <img src="./car3.png" />
+      </div>
+    </div>
+  </div>
+
+  <button id="pre">이전</button>
+  <button class="slide-1">1</button>
+  <button class="slide-2">2</button>
+  <button class="slide-3">3</button>
+  <button id="next">다음</button>
+
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script>
+    var start = 0;
+    var downChk = false;
+
+    $('.slide-box').eq(0).on('mousedown', function (e) {
+      start = e.clientX // 시작좌표
+      downChk = true;
+    })
+    $('.slide-box').eq(0).on('mousemove', function (e) {
+      start - e.clientX // 시작-현재좌표 = 움직인 거리
+
+      if (downChk == true) {
+        console.log(e.clientX - start)
+        $('.slide-container').css('transform', `translateX(${e.clientX - start}px)`)
+      }
+    })
+    $('.slide-box').eq(0).on('mouseup', function (e) {
+      if (e.clientX - start < -250) {
+        $('.slide-container')
+          .css('transition', 'all 0.5s')
+          .css('transform', `translateX(-100vw)`)
+      } else {
+        $('.slide-container')
+          .css('transition', 'all 0.5s')
+          .css('transform', `translateX(0vw)`)
+      }
+      setTimeout(() => {
+        $('.slide-container').css('transition', 'none')
+      }, 500)
+
+      downChk = false;
+    })
+
+
+    // 모바일에서 이벤트할 때
+    $('.slide-box').eq(0).on('touchstart', function (e) {
+      start = e.touches[0].clientX // 시작좌표
+      downChk = true;
+    })
+    $('.slide-box').eq(0).on('touchmove', function (e) {
+      start - e.touches[0].clientX // 시작-현재좌표 = 움직인 거리
+
+      if (downChk == true) {
+        $('.slide-container').css('transform', `translateX(${e.touches[0].clientX - start}px)`)
+      }
+    })
+    $('.slide-box').eq(0).on('touchend', function (e) {
+      if (e.changedTouches[0].clientX - start < -250) {
+        $('.slide-container')
+          .css('transition', 'all 0.5s')
+          .css('transform', `translateX(-100vw)`)
+      } else {
+        $('.slide-container')
+          .css('transition', 'all 0.5s')
+          .css('transform', `translateX(0vw)`)
+      }
+      setTimeout(() => {
+        $('.slide-container').css('transition', 'none')
+      }, 500)
+
+      downChk = false;
+    })
+  </script>
+</body>
+
+</html>

@@ -58,3 +58,18 @@ ul.list::after {
   margin: auto;
   max-width: 80%;
 }
+
+/* ex7 carousel touch*/
+.slide-container {
+  width: 300vw;
+  /* transition: all 1s; */
+}
+
+.slide-box {
+  width: 100vw;
+  float: left;
+}
+
+.slide-box img {
+  width: 100%;
+}
