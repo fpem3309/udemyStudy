@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Img Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="card-background">
+    <div class="card-box">
+      <img src="card1.png" />
+    </div>
+    <div class="card-box">
+      <img src="card2.png" />
+    </div>
+    <div class="card-box">
+      <img src="card3.png" />
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script>
+    $(window).scroll(function () {
+      var scrollHeight = $(window).scrollTop();
+      console.log(scrollHeight)
+
+      // 900~1400 스크롤바 내리면 첫 카드 opacity 천천히 변경
+      var y = (-1 / 500) * scrollHeight + 14 / 5;
+
+      var y2 = (-1/5000) * scrollHeight + 50/45;
+
+      $('.card-box').eq(0).css('opacity', y)
+      $('.card-box').eq(0).css('transform', `scale(${y2})`)
+    })
+  </script>
+</body>
+
+</html>

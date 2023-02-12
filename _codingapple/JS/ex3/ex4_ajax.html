@@ -29,8 +29,18 @@
 
   <div class="container my-3">
     <button class="btn btn-danger" id="price">가격순 정렬</button>
+  </div>
+
+  <div class="container my-3">
     <button class="btn btn-warning" id="name_desc">상품명 역순 정렬</button>
+  </div>
+  
+  <div class="container my-3">
     <button class="btn btn-warning" id="under6">6만원 이하 상품보기</button>
+  </div>
+
+  <div class="container my-3">
+    <a class="btn btn-success" href="./ex4_localcart.html">장바구니 보기</a>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
@@ -67,6 +77,7 @@
             <img src="https://via.placeholder.com/700x700" class="w-100">
             <h5>${products.title}</h5>
             <p>가격 : ${products.price}원</p>
+            <button class="buy">구매</button>
           </div>`
       )
     }
@@ -74,6 +85,40 @@
     products.forEach(element => {
       appleGet(element)
     })
+
+
+
+    // localStorage =================================================
+
+    localStorage.setItem('이름','kim')
+
+    // array, object 저장 - JSON으로 바꾸면 됨
+    var arr = [1,2,3]
+    var newArr = JSON.stringify(arr)
+
+    localStorage.setItem('num',newArr)
+    var getArr = localStorage.getItem('num')
+
+    console.log(JSON.parse(getArr)) // 다시 array로 꺼낼땐 JSON.parse
+
+
+    // test - 구매버튼 누르면 localStorage에 넣기
+
+    $('.buy').click(function(){
+      var productTitle = $(this).siblings('h5').text()
+
+      if(localStorage.getItem('cart')){ // cart가 이미 있으면 array 수정
+        var getCart = JSON.parse(localStorage.getItem('cart'))
+        getCart.push(productTitle)
+        localStorage.setItem('cart',JSON.stringify(getCart))
+
+      }else{// cart가 없으면 array 생성
+        localStorage.setItem('cart', JSON.stringify([productTitle]))
+      }
+    })
+
+    // localStorage =================================================
+
 
     var cnt = 0;
     $('.container .btn-primary').click(function () {
@@ -154,6 +199,7 @@
         return 0;
       })
       $('.row').html('');
+      
       products.forEach((product) => {
         $('.row').append(
           `<div class="col-sm-4">
@@ -168,7 +214,7 @@
     // 6만원 이하 상품보기
     $('#under6').click(function () {
       let under6 = products.filter(function (product) {
-        return product.price < 60000
+        return product.price <= 60000
       })
       $('.row').html('');
 

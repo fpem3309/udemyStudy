@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>localStorage Cart</title>
+</head>
+
+<body>
+  <div class="cart_container">
+    <h1>장바구니</h1>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+  <script>
+    var cartsArr = JSON.parse(localStorage.getItem("cart"))
+    if (cartsArr) {
+      cartsArr.forEach(element => {
+        $('.cart_container').append(`
+      <p>${element}</p>
+    `)
+      });
+    }else{
+      $('.cart_container').append(`
+      <p>장바구니에 상품이 없습니다.</p>
+    `)
+    }
+  </script>
+</body>
+
+</html>

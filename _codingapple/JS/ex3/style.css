@@ -22,3 +22,39 @@ ul.list::after {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* ex5 sticky*/
+.grey{
+  background-color: lightgrey;
+  height: 2000px;
+  margin-top: 500px;
+}
+
+.grey .sticky_img{
+  float: right;
+  width: 400px;
+  position: sticky; /* 조건부로 fixed, 부모박스 넘어가면 해제*/
+  top:100px;
+}
+
+.grey .sticky_text{
+  float: left;
+  width: 300px;
+}
+
+/* ex6 scroll img */
+.card-background{
+  height: 3000px;
+  margin-top:800px;
+  margin-bottom: 1600px;
+}
+.card-background .card-box{
+  position: sticky;
+  top: 100px;
+  margin-top: 200px;
+}
+.card-background .card-box img{
+  display: block;
+  margin: auto;
+  max-width: 80%;
+}
