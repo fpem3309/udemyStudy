@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">집꾸미기</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">스토어</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              시공견적
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input id="search-text" class="form-control me-2" type="search" placeholder="검색어 입력" aria-label="Search">
+          <button id="search-btn" class="btn btn-outline-success" type="button">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="products-container" style="display: flex;"></div>
+
+  <div class="cart-container" style="margin-top:100px">
+    <h1>장바구니</h1>
+    <div class="cart-drag-container"
+      style="display: inline-flex;width:80%;height: 500px; margin:0 auto; background-color: #000;">
+      <p style="color:white; font-size: 40px; text-align: center; position: absolute; z-index: 1; padding:20% 0">여기로 드래그
+      </p>
+    </div>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+  <script>
+    $.get('store.json').then(({ products }) => {
+
+      products.forEach(item => {
+        $('.products-container').append(`
+        <div class="card" style="width: 18rem; margin:10px auto;" draggable="true">
+          <img src="./${item.photo}" class="card-img-top" draggable="false" >
+          <div class="card-body">
+            <h4 class="card-title"><b>${item.title}<b/></h4>
+            <p class="card-text">${item.brand}</p>
+            <h5 class="card-title">${item.price}</h5>
+            <a href="#" class="btn btn-dark">담기</a>
+          </div>
+        </div>
+
+      `)
+      });
+
+      $('#search-btn').click(function () {
+        var searchText = $('#search-text').val()
+        $('.products-container').html('')
+
+        products.filter(function (item, i) {
+          if (item.title.includes(searchText)) {
+            $('.products-container').append(
+              `<div class="card" style="width: 18rem; margin:10px auto; draggable="true"">
+                <img src="./${item.photo}" class="card-img-top" draggable="false" >
+                <div class="card-body">
+                  <h4 class="card-title"><b>
+                    <span style="background-color:yellow">${searchText}</span>
+                    ${item.title.replace(searchText, '')}
+                    </b></h4>
+                  <p class="card-text">${item.brand}</p>
+                  <h5 class="card-title">${item.price}</h5>
+                  <a href="#" class="btn btn-dark">담기</a>
+                </div>
+              </div>`
+            )
+          }
+        })
+
+      })
+
+      $('.card').on('dragstart', function (e) {
+        var cardbody = $(this).children('.card-body')
+        var cardinfo = cardbody.children('b').children('b')
+
+        console.log($(this).children('.card-img-top').attr('src'));
+        console.log(cardbody.children('.card-title').children('b').text())
+        console.log(cardinfo.children('.card-text').text())
+        console.log(cardinfo.children('.card-title').text())
+
+        // e.originalEvent.dataTransfer.setData('card-img', $(this).children('.card-img-top').attr('src'))
+        // e.originalEvent.dataTransfer.setData('card-title', cardbody.children('.card-title').children('b').text())
+        // e.originalEvent.dataTransfer.setData('card-text', cardinfo.children('.card-text').text())
+        // e.originalEvent.dataTransfer.setData('card-price', cardinfo.children('.card-title').text())
+
+        var data = {
+          'img': $(this).children('.card-img-top').attr('src'),
+          'title': cardbody.children('.card-title').children('b').text(),
+          'text': cardinfo.children('.card-text').text(),
+          'price': cardinfo.children('.card-title').text()
+        }
+
+        e.originalEvent.dataTransfer.setData('card_data', JSON.stringify(data))
+
+      })
+
+    })
+
+
+    $('.cart-drag-container').on('dragover', function (e) {
+      e.preventDefault()
+    })
+
+    var cartArr = [];
+    $('.cart-drag-container').on('drop', function (e) {
+      var data = JSON.parse(e.originalEvent.dataTransfer.getData('card_data'))
+
+
+      // ====================
+      // 장바구니에 이미 있는지
+      // ====================
+      var find = cartArr.findIndex(function (a) {
+        return a.id == data.id
+      })
+
+      console.log(find)
+
+      // if (find < 0) {
+        cartArr.push(data)
+      // } else {
+
+      // }
+      cartArr.forEach(function (product) {
+        $('.cart-drag-container').append(
+          `<div class="card" style="width: 18rem; draggable="true" ">
+          <img src="./${product.img}" class="card-img-top" draggable="false" >
+          <div class="card-body">
+            <h4 class="card-title"><b>
+              <span>${product.title}</span>
+              </b></h4>
+            <p class="card-text">${product.text}</p>
+            <h5 class="card-title">${product.price}</h5>
+          </div>
+        </div>`
+        )
+      })
+
+
+      // $('.cart-drag-container').append(
+      // `<div class="card" style="width: 18rem; draggable="true" ">
+      //   <img src="./${cardData.img}" class="card-img-top" draggable="false" >
+      //   <div class="card-body">
+      //     <h4 class="card-title"><b>
+      //       <span>${cardData.title}</span>
+      //       </b></h4>
+      //     <p class="card-text">${cardData.text}</p>
+      //     <h5 class="card-title">${cardData.price}</h5>
+      //   </div>
+      // </div>`
+      // )
+    })
+
+
+  </script>
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
