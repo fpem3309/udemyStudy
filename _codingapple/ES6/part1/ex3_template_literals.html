@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template literals</title>
+</head>
+
+<body>
+  <script>
+    var name = '손흥민'
+    var hi = `안녕하세요 저는 ${name}입니다.`;
+    console.log(hi);
+
+
+    function test(chars, vars) { // 3번째 파라미터도 변수
+      // console.log(chars);
+      // console.log(vars);
+      console.log(chars[1] + vars + chars[0]);
+    }
+
+    // tagged literal - `문자`를 해체분석할 수 있음
+    test`안녕하세요 ${name} 입니다`
+
+
+
+    var pants = 0;
+    var socks = 100;
+
+    // 양말 바지 순서 바꾸기
+    function changeVar(chars, vars1, vars2) {
+      console.log(chars[1] + vars1 + chars[0] + vars2);
+    }
+
+    changeVar`바지${pants} 양말${socks}`
+
+
+    // pants가 0이면 바지 다 팔렸어요 양말 100 출력
+    function changeVar2(chars, vars1, vars2) {
+      if (vars1 == 0) {
+        console.log(`바지 다 팔렸어요 ${chars[1]} ${vars2}`)
+      }else{
+        console.log(chars[1] + vars1 + chars[0] + vars2);
+      }
+    }
+
+    changeVar2`바지${pants} 양말${socks}`
+
+
+  </script>
+</body>
+
+</html>

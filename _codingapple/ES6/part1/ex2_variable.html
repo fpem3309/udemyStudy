@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variable Demo</title>
+</head>
+
+<body>
+
+  <div style="display : none">모달창0</div>
+  <div style="display : none">모달창1</div>
+  <div style="display : none">모달창2</div>
+  
+  <button>버튼0</button>
+  <button>버튼1</button>
+  <button>버튼2</button>
+
+
+  <script>
+
+    // 변수 => 선언, 할당, 범위, 호이스팅
+
+
+    // var
+    var name = 'kim'; // 재선언 o, 재할당 o, 범위 function
+    var name = 'Lee';
+    name = 'park';
+
+
+    // let
+    let age = 20; // 재선언 x, 재할당 o, 범위 { }
+    //let age = 20; // 에러
+    age = 30;
+
+
+    // const
+    const city = 30; // 재선언 x, 재할당x, 범위 { }
+    // const city = 40;  // 에러
+    // city = 40;  // 에러
+
+    const man = { name: 'kim' };// const 오브젝트 내부 값은 변경가능!
+    man.name = 'Park'  // const 변수를 재할당한게 아님
+
+
+    function test() {
+      var test_name = 'kim';
+      test_name
+    }
+    // console.log(test_name)  // 에러 - function 범위 벗어남
+
+    if (true) {
+      let test_name2 = 'Park';
+      console.log(test_name2);
+    }
+    for (let v = 0; v < 1; v++) {
+      console.log(v);
+    }
+
+    // console.log(test_name2);/  / 에러 - {  } 범위 벗어남
+    // console.log(v);  // 에러 - { } 범위 벗어남
+
+
+    // Hoisting - 변수의 선언을 변수 범위 맨 위로 끌고오는 현상, 함수도 Hoisting 현상 일어남
+
+    console.log(ho1); // not defined 에러가 뜨지않고 undefined가 출력됨
+
+    var ho1 = 30;
+    console.log(ho1);
+
+
+    // 전역변수 - 바깥 변수는 어떤 범위에서도 사용가능
+    var test1 = 20;
+    window.glo = '전역변수';
+
+    // window로 전역변수 만들기
+    console.log(glo)
+    console.log(window.glo)
+
+    function testfn() {
+      console.log(test1)
+      var test2 = 20; // 지역변수
+
+    }
+    testfn();
+
+
+    // var = Hoisting시 undefined로 할당되는데 let,const는 undefined로 할당안됨 => 에러
+
+    // 함수();
+    // function 함수() {
+    //   console.log(안녕);
+    //   let 안녕 = 'Hello!';
+    // }
+
+
+
+    // var = 함수 만 Hoisting으로 선언돼서 함수가 아니라고 에러
+
+    // 함수();
+    // var 함수 = function () {
+    //   console.log(안녕);
+    //   var 안녕 = 'Hello!';
+    // }
+
+
+
+    // 함수 실행을 안함 => 1
+
+    // let a = 1;
+    // var 함수 = function () {
+    //   a = 2;
+    // }
+    // console.log(a);
+
+
+
+    // var testb랑 window.testb 는 전역변수라 4
+    // 가장 가까운 범위의 변수 값을 가져옴 => a = 1, b = 4
+    // let testa = 1;
+    // var testb = 2;
+    // window.testa = 3;
+    // window.testb = 4;
+
+    // console.log(a + b);
+
+
+    // var로하면 전역변수 var=5가 돼버려서 5만 출력됨, let으로하면 for범위 안에서만 ++돼서 사용됨
+    for (var i = 1; i < 6; i++) {
+      setTimeout(function () { console.log(i); }, i * 1000);
+    }
+
+
+    // click해야 모달창들[i]에 값이 들어가고, var가 3이 되버린 후에 실행되기때문에 에러
+    var 버튼들 = document.querySelectorAll('button');
+    var 모달창들 = document.querySelectorAll('div');
+
+    for (var i = 0; i < 3; i++) {
+
+      버튼들[i].addEventListener('click', function () {
+        모달창들[i].style.display = 'block';
+      });
+
+    }
+
+  </script>
+</body>
+
+</html>

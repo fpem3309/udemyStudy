@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spread Operator</title>
+</head>
+
+<body>
+  <script>
+    var arr = ['hello', 'world'];
+
+    // ... = 소,중,대괄호 안에서만 사용!
+
+    // Array에 붙이면 대괄호 제거
+    console.log(...arr);
+
+    // 문자에 붙이면 문자 하나하나씩 펼쳐줌(대괄호 제거 뜻)
+    var value = 'hello';
+    console.log(...value);
+
+    var a = [1, 2, 3]
+    var b = [4, 5, 6]
+
+    var c = [...a, ...b]  // a와 b 복사해서 합쳐줌 - Deep copy 할 때 유용
+
+    console.log(c)
+
+
+    var a1 = [1, 2, 3]
+    var b1 = a1;  // 등호로 복사하면 값을 공유 - reference data type(Array, Object)
+
+    a1[3] = 4
+
+    console.log(a1)
+    console.log(b1)
+
+
+    // 오브젝트 합치기
+    var o1 = { a: 1, b: 2 }
+    var o2 = { ...o1, c: 3 }
+
+    console.log(o2)
+
+    var o3 = { a: 2, ...o1 }  // copy한 오브젝트 값 중복이 일어나면 맨 뒤 값을 적용
+    console.log(o3)
+
+
+
+
+
+    // spread operator 함수 파라미터
+
+    function plus(a, b, c) {
+      console.log(a + b + c)
+    }
+
+    var arr = [10, 20, 30]
+
+    plus.apply(undefined, arr)  // 옛날 방식
+    plus(...arr)
+
+
+    var person = {
+      hello: function () {
+        console.log(this.name + ' 안녕~')
+      }
+    }
+
+    var person2 = {
+      name: '손흥민'
+    }
+
+    person.hello.apply(person2, [1, 2]) // person2에서 실행됨 - 파라미터 배열형태로
+    person.hello.call(person2, 1, 2) // person2에서 실행됨 - 파라미터 일반형태로
+
+  </script>
+</body>
+
+</html>
