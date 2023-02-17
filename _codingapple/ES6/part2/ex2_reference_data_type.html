@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primitive / Reference data type</title>
+</head>
+
+<body>
+  <script>
+    var value1 = 1234;  // Primitive data type - 변수에 값이 그대로 저장
+    var array1 = [1, 2, 3]; // Array, Object는 변수에 reference가 저장
+    var obj1 = { name: 'kim' };
+
+    var name1 = '김';
+    var name2 = name1;  // 복사
+    name1 = '박';
+
+    var objname1 = { name: '김' };
+    var objname2 = objname1;
+    objname1.name = '박';
+
+
+    var obj_name1 = { name: '홍길동' }
+    var obj_name2 = { name: '홍길동' }
+
+
+    // function objChange(obj){
+    //   obj.name = '홍당무'
+    // }
+    // objChange(obj_name1)
+
+    function objChange(obj) {
+      obj = { name: '홍당무' }
+      console.log(obj)
+    }
+    objChange(obj_name1)
+
+  </script>
+</body>
+
+</html>
