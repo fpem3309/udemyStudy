@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inheritance</title>
+</head>
+
+<body>
+  <script>
+    // ES5
+    var parentObj = { name: '김씨', age: 50 }
+    var childObj = Object.create(parentObj) // prototype 을 parentObj로 ( 상속 )
+    console.log(childObj)
+
+    childObj.age = 20;
+    console.log(childObj)
+
+    var baby = Object.create(childObj)  // 여러번 상속 가능
+    console.log(baby)
+  </script>
+</body>
+
+</html>

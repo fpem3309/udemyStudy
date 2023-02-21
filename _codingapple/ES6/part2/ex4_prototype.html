@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype</title>
+</head>
+
+<body>
+  <script>
+    function Student() {
+      // this = 새로 생성되는 object
+      this.name = '홍길동'
+      this.age = 20
+      this.hello = function () {
+        console.log('안녕하세요 ' + this.name + ' 입니다')
+      }
+    }
+
+    student1 = new Student()
+    Student.prototype.gender = '남'
+
+    console.log(Student.prototype)
+    console.log(student1.__proto__) // 부모의 prototype 검사 - 위 콘솔과 결과 같음
+
+    var parentObj = { name: '김씨' }
+    var childObj = {}
+    childObj.__proto__ = parentObj  // __proto__를 이용해 부모 강제 등록
+
+    console.log(childObj.name)
+
+
+    // test 1
+    function Student2(name, age) {
+      this.name = name
+      this.age = age
+      this.sayHi = function () {
+        console.log(`안녕 나는 ${this.name}이야`)
+      }
+    }
+
+    var st1 = new Student2('kim', 20)
+    var st2 = new Student2('Park', 21)
+    var st3 = new Student2('Lee', 22)
+    st1.sayHi()
+
+    function Student3(이름, 나이) {
+      this.name = 이름;
+      this.age = 나이;
+    }
+
+    // test 2
+    Student3.prototype.sayHi = () => {
+      console.log('안녕 나는 ' + this.name + '이야');
+    }
+    var 학생1 = new Student3('Kim', 20);
+
+    학생1.sayHi(); //왜 이 코드가 제대로 안나오죠?
+    // arrow function은 this 재정의가 되지않고 window를 출력
+
+
+    // test3 모든 array에 적용할 수 있는 함수 만들기
+    Array.prototype.remove3 = function () { // Array prototype에 remove3 함수 생성
+      for (var i = 0; i < this.length; i++) {
+        if (this[i] === 3) {
+          this.splice(i, 1);
+        }
+      }
+    }
+    var arr = [1, 2, 3]
+    arr.remove3()
+    console.log(arr)
+
+  </script>
+</body>
+
+</html>
