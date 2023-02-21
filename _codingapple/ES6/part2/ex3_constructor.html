@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constructor</title>
+</head>
+
+<body>
+  <script>
+
+    // constructor - 비슷한 object를 만들때
+
+    // var student1 = { name: '홍길동', age: 20 }
+
+    function Student(name, age) {
+      // this = 새로 생성되는 object
+      this.name = name
+      this.age = age
+      this.hello = function () {
+        console.log('안녕하세요 ' + this.name + ' 입니다')
+      }
+    }
+
+    // student1 = new Student() // student1이라는 object 생성
+    // console.log(student1)
+
+    student1 = new Student('홍당무', 20) 
+    student1.hello();
+
+
+
+    // test 1
+    function Products(name, price){
+      this.name = name
+      this.price = price
+      this.vat = function(){
+        console.log(this.price*10/100)
+      }
+    }
+
+    product1 = new Products('shirts',50000)
+    product2 = new Products('pants',60000)
+    console.log(product1, product2)
+    product1.vat()
+    
+
+  </script>
+</body>
+
+</html>
