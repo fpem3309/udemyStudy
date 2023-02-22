@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>extends, super</title>
+</head>
+
+<body>
+  <script>
+    class Grandfa{
+      constructor(name){
+        this.last = '김'
+        this.name = name
+      }
+      sayHi(){
+        console.log('hi grnadfa')
+      }
+    }
+
+    var grand1 = new Grandfa('민수')
+
+    class fa extends Grandfa{
+      constructor(name){  // 파라미터 같이 맞춰야함 안하면 undefined
+        super(name);  // 부모 class의 constructor 의미
+        this.age = 50;  // extends해서 만든 class는 super쓰고 this 써야함(물려받는 class의 constructor라는 뜻)
+      }
+      sayHi(){
+        console.log('hi fa')
+        super.sayHi();  // 부모 class의 prototype 의미
+      }
+    }
+
+    var fa1 = new fa('만득');
+
+  </script>
+</body>
+
+</html>
