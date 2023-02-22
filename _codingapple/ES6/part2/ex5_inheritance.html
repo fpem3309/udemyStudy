@@ -11,6 +11,7 @@
 <body>
   <script>
     // ES5
+    // 프로토타입 만드는 문법
     var parentObj = { name: '김씨', age: 50 }
     var childObj = Object.create(parentObj) // prototype 을 parentObj로 ( 상속 )
     console.log(childObj)
@@ -20,6 +21,27 @@
 
     var baby = Object.create(childObj)  // 여러번 상속 가능
     console.log(baby)
+
+
+    // ES6
+    // constructor를 만드는 신문법
+    class parentClass {
+      constructor(last){
+        this.name = last
+        this.sayHi = function(){  // constructor에 함수 추가 (자식이 직접 함수를 가짐)
+          console.log('Hello constructor')
+        }
+      }
+      sayHello(){  // parentClass.prototype에 추가됨
+        console.log('Hello prototype')
+      }
+
+    }
+
+    var child = new parentClass('kim 씨');
+
+    console.log(Object.getPrototypeOf(child)) // __proto__랑 같은 의미 ( 부모의 prototype 출력)
+
   </script>
 </body>
 
