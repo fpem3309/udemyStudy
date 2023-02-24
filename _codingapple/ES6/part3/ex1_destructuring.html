@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destructuring</title>
+</head>
+
+<body>
+  <script>
+    var arr = [2, 3, 4];
+
+    var [a, b, c] = [2, 3, 4];  // 각각 변수 선언됨
+    var [a, b, c] = arr; // 이렇게도 선언됨
+
+    var [a, b, c = 10] = [2, 3]; // 기본값 지정 가능 - 지정 안하면 undefined
+
+
+
+
+    var obj = { name: 'Kim', age: 30 }
+
+    var { name, age } = { name: 'Kim', age: 30 } // 오브젝트도 이런식으로 선언됨
+    var { name, age = 10 } = { name: 'Kim' } // 기본값도 지정가능
+
+    var { name: 이름 } = { name: 'Kim' } // 변수명 변경 가능
+    var { name: 이름 = 'Park' } = {} // 변수명 변경 + 기본값 가능
+
+
+
+
+    var name = 'Lee'
+    var age = 10
+    // var obj = { name: name, age: age }  // 변수를 object에 넣을 때
+    var obj = { name, age }  // ES6 함축가능
+
+
+
+
+    var obj = { name: 'Choi', age: 50 }
+
+    function test({ name, age }) {  // object 데이터를 파라미터로 만들 때
+      console.log(name)
+      console.log(age)
+    }
+
+    test({ name: 'Choi', age: 50 })
+    test(obj)
+
+
+
+
+    function test2([param1, param2]) {  // array 데이터를 파라미터로 만들 때
+      console.log(param1)
+      console.log(param2)
+    }
+
+    test2([1, 2])
+
+
+
+    //  test
+    //  다음과 같은 Object에서 데이터를 뽑아서 변수를 만들고 싶습니다.
+    //  여기서 키, 몸무게, 상의사이즈, 하의사이즈 정보를 각각 뽑아서 4개의 변수를 만들고 싶습니다.
+
+    let 신체정보 = {
+      body: {
+        height: 190,
+        weight: 70
+      },
+      size: ["상의 Large", "바지 30인치"],
+    };
+
+    // var { 키, 몸무게, 상의사이즈 } = { 키: 신체정보.body.height, 몸무게: 신체정보.body.weight, 상의사이즈: [신체정보.size] }
+
+    var { body: { height: 키, weight: 몸무게 }, size: [상의사이즈, 하의사이즈] } = 신체정보
+  </script>
+</body>
+
+</html>
