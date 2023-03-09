@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var obj = { name: 'kim', age: 30 };
+
+    console.log(Object.getOwnPropertyDescriptor(obj, 'name'));  // 숨겨진 정보 3개
+    // enyumerable:true = 셀 수 있는 자료
+
+
+    // [1, 2, 3].forEach();  // Array 전용
+
+
+    class Parent{  };
+    Parent.prototype.name = "부모";
+
+    
+    var obj = new Parent();
+
+    // Object 전용 - enumerable 한 것만 반복
+    // 부모의 prototype도 반복가능
+    for (var key in obj) {
+      // console.log(obj)
+      if (obj.hasOwnProperty(key)) {  // 부모가아닌 내가 직접 가지고 있는 값만 반복하려면
+        console.log(obj[key])
+      }
+    }
+
+    // for (var key of obj) {    // iterable 전용
+
+    // }
+  </script>
+</body>
+
+</html>

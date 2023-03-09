@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise</title>
+</head>
+
+<body>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+  <img id="test" src="https://codingapple1.github.io/kona.jpg">
+
+  <script>
+
+    // 이미지로딩 체크하는 Promise
+
+    var imgLoading = new Promise(function (succ, fail) {
+      var img = document.querySelector('#test');
+
+      img.addEventListener('load', function () {
+        succ();
+      });
+
+      img.addEventListener('error', function () {
+        fail();
+      });
+    });
+
+    imgLoading.then(function () {
+      console.log('로딩성공')
+    }).catch(function () {
+      console.log('로딩실패')
+    })
+
+
+
+    // Ajax 요청 성공/실패 Promise
+
+    var promise = new Promise(function (succ, fail) {
+      $.get('https://codingapple1.github.io/hello.txt')
+        .done(function (data) { // ajax 응답 결과
+          succ(data)
+        })
+    });
+
+    promise.then(function (data) {  // succ()안에 들어간 data
+      console.log(data);
+
+      new Promise(function (succ, fail) {   // then() 에서 new Promise()를 배출하면 뒤에 then을 또 쓸 수 있음
+        $.get('https://codingapple1.github.io/hello2.txt')
+          .done(function (data) { // ajax 응답 결과
+            succ(data)
+          })
+      }).then(function (data) {
+        console.log(data);
+      })
+    })
+
+
+
+    
+    // 함수로 만들어 사용하기
+
+
+    promise = ajaxFn('hello.txt');
+
+    promise.then(function(data){
+      console.log(data);
+      return ajaxFn('hello2.txt');
+    }).then(function(data){
+      console.log(data);
+    })
+
+
+    function ajaxFn(txt) {
+      return new Promise(function (succ, fail) {   // then() 에서 new Promise()를 배출하면 뒤에 then을 또 쓸 수 있음
+        $.get(`https://codingapple1.github.io/${txt}`)
+          .done(function (data) { // ajax 응답 결과
+            succ(data)
+          })
+      })
+    }
+
+  </script>
+</body>
+
+</html>
