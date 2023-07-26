@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <section onclick="alert('section clicked')">
+
+    <p onclick="alert('p clicked')">
+      I am a paragraph
+      <button onclick="alert('button clicked')">Click</button>
+    </p>
+  </section>
+
+  <div id="container">
+    Click To Hide
+    <button id="btn">Change Color</button>
+  </div>
+
+  <hr>
+
+  <h1>Event Delegation</h1>
+  <form action="">
+    <input type="text" id="username" placeholder="username">
+    <input type="text" id="tweet" placeholder="tweet">
+    <button id="btn_tweet">Post Tweet</button>
+  </form>
+  <h2>Tweets</h2>
+  <ul id="ul">
+    <li>I AM LI</li>
+    <li>I AM LI</li>
+  </ul>
+
+  <script src="ex9_이벤트위임.js"></script>
+</body>
+
+</html>
