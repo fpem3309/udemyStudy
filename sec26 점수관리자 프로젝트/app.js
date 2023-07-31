@@ -135,8 +135,8 @@ class Player{
       if (this.score === winningScore) {
         isGameOver = true
         this.display.classList.add('has-text-success')
-        opponent.display.classList.add('has-text-danger')
         this.button.disabled = true;
+        opponent.display.classList.add('has-text-danger')
         opponent.button.disabled = true;
       }
       this.display.textContent = this.score
@@ -152,7 +152,6 @@ const playtoSelect = document.querySelector('#playto')
 
 let winningScore = 3
 let isGameOver = false
-
 
 p1.button.addEventListener('click', function () {
   p1.updateScores(p2)
