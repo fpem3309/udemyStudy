@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image memes</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <style>
+    nav {
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
+    #nav-1 {
+      background: #3fa46a;
+      height: 60px;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .link-1 {
+      float: left;
+      transition: 0.3s ease;
+      background: #3fa46a;
+      color: #ffffff;
+      font-size: 20px;
+      text-decoration: none;
+      border-top: 4px solid #3fa46a;
+      border-bottom: 4px solid #3fa46a;
+      padding-top: 10px;
+      margin: 0 20px;
+    }
+
+    .link-1 a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .link-1 .memeSub,
+    .link-1 .categoryeSub {
+      position: absolute;
+      background: #3fa46a;
+      width: 100px;
+    }
+
+    .link-1 .memeSub li,
+    .link-1 .categoryeSub li {
+      z-index: 1000;
+      border-bottom: 1px solid rgb(76, 80, 92);
+    }
+
+    .link-1:hover {
+      padding: 6px 0;
+    }
+
+    .main_grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      /* gap: 5px; */
+    }
+
+    .main_grid .meme_img {
+      width: 170px;
+      height: 200px;
+      box-shadow: 7px 7px 8px rgba(0, 0, 0, 0.5);
+      margin-bottom: 10px;
+    }
+
+    .main_grid .meme_img .meme {
+      width: 100%;
+      height: 80%;
+    }
+
+    .grow_on {
+      display: block;
+    }
+
+    .grow_off {
+      display: none;
+    }
+
+    .v-lazy-image {
+      opacity: 0;
+      transform: translate3d(0, 50%, 0);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+
+    .v-lazy-image-loaded {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .swiper .pop_meme {
+      width: 200px;
+      height: 170px;
+    }
+
+    .sample-slider .swiper-wrapper {
+      transition-timing-function: linear;
+    }
+    .swiper{
+      height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <!-- <nav id="nav-1">
+      <ul>
+        <li class="link-1">
+          <a href="/">Home</a>
+        </li>
+        <li class="link-1">
+          Memes
+          <ul class="memeSub">
+            <li>
+              <a class="link-2" href="/memes/image">image</a>
+            </li>
+            <li>
+              <a class="link-2" href="/memes/gif">gif</a>
+            </li>
+            <li>
+              <a class="link-2" href="/memes/video">video</a>
+            </li>
+          </ul>
+        </li>
+        <li class="link-1">
+          Categories
+          <ul class="categoryeSub">
+            <li>
+              <a class="link-2" href="/category/developer">developer</a>
+            </li>
+            <li>
+              <a class="link-2" href="/category/animal">animal</a>
+            </li>
+            <li>
+              <a class="link-2" href="/category/man">man</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav> -->
+
+    <%-include('nav.html')%>
+
+  </div>
+  
+  <section>
+    <div class="swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">Slide 5</div>
+        ...
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- If we need scrollbar -->
+      <div class="swiper-scrollbar"></div>
+    </div>
+  </section>
+
+  <script>
+    const swiper = new Swiper('.swiper', {
+      // Optional parameters
+      direction: 'horizontal',
+      loop: true,
+      autoplay:true,
+
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination',
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+# default.yml에서 설정한것 + 개발 환경에서 필요한 정보
+
+db:
+  host: 'localhost'
+  username: 'postgres'
+  password: '1234'
+  synchronize: true # 앱이 시작하면 Entity 재생성(개발 환경에서는 true)
+
+jwt:
+  secret: 'jwt-secret'
